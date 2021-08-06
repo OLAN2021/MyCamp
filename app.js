@@ -1,6 +1,7 @@
 if (process.env.NODE_ENV !== "production") {
   require('dotenv').config();
 }
+
 //require('dotenv').config()
 
 //console.log(process.env.SECRET)
@@ -32,8 +33,8 @@ const MongoStore = require('connect-mongo');
 
 
 
-//const dbUrl = 'mongodb://localhost:27017/yelp-camp';
-const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/yelp-camp';
+const dbUrl = 'mongodb://localhost:27017/yelp-camp';
+//const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/yelp-camp';
 mongoose.connect(dbUrl, {
     useNewUrlParser: true,
     useCreateIndex: true,
@@ -83,7 +84,7 @@ const sessionConfig = {
     store,
     cookie: {
         httpOnly: true,
-        //secure: true,
+       // secure: true,
         expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
         maxAge: 1000 * 60 * 60 * 24 * 7
     }
